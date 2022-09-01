@@ -1,0 +1,31 @@
+@for $i from 1 through 12 {
+    .col-#{$i} {
+      width: calc(100% / 12 * $i);
+    }
+    .col-push-#{$i} {
+      margin-right: calc(100% / 12 * $i);
+    }
+    .col-pull-#{$i} {
+      margin-left: calc(100% / 12 * $i);
+    }
+  }
+  
+  .row {
+    margin: 0 -15px;
+    display: flex;
+    flex-wrap: wrap;
+    [class*="col-"] {
+      padding: 0 15px;
+    }
+    &.center {
+      justify-content: center;
+      align-items: center;
+    }
+    &.centerX {
+      justify-content: center;
+    }
+    &.centerY {
+      align-items: center;
+    }
+  }
+  
