@@ -30,8 +30,8 @@ const Video: FC<VideoProps> = ({ item, horizontal }) => {
       <Flex gap={4} direction={horizontal ? 'row' : 'column'}>
         <Box position="relative">
           <Box
-            w={horizontal ? '170px' : '100%'}
-            h={horizontal ? '100px' : '200px'}
+            w={horizontal ? '140px' : '100%'}
+            h={horizontal ? '80px' : '200px'}
           >
             <Image
               src={item.snippet?.thumbnails?.medium?.url}
@@ -58,7 +58,13 @@ const Video: FC<VideoProps> = ({ item, horizontal }) => {
           {!horizontal && <Avatar size="sm" />}
           <Flex direction="column" gap={1}>
             <Text fontWeight="bold">{item.snippet?.title}</Text>
-            <Text fontSize="12px" color="secondaryColor">
+            <Text
+              fontSize="12px"
+              color="secondaryColor"
+              textOverflow="ellipsis"
+              noOfLines={1}
+              w="100%"
+            >
               {item.snippet?.channelTitle}
             </Text>
             <Text fontSize="12px" color="secondaryColor">

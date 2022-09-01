@@ -68,12 +68,23 @@ const ViewVideo: NextPage = () => {
       <Grid
         gap={8}
         w="100%"
-        h="100%"
+        h="fit-content"
+        paddingLeft={{
+          base: 36,
+          sm: 8,
+          lg: 36,
+        }}
+        paddingRight={{
+          base: 36,
+          sm: 8,
+          lg: 36,
+        }}
         paddingBlock={8}
-        paddingInline={44}
+        // paddingInline={36}
         bgColor="mainBgColorDark"
         templateRows="repeat(12, 1fr)"
         templateColumns="repeat(12, 1fr)"
+        justifyContent="center"
       >
         <GridItem
           rowSpan={12}
@@ -82,7 +93,13 @@ const ViewVideo: NextPage = () => {
             lg: 8,
           }}
         >
-          <Box h="60%">
+          <Box
+            h={{
+              base: '60vh',
+              sm: '40vh',
+              md: '60vh',
+            }}
+          >
             <iframe
               width="100%"
               height="100%"
@@ -104,7 +121,7 @@ const ViewVideo: NextPage = () => {
               alignItems="center"
             >
               <Text color="secondaryColor">
-                0 views - {videoInfo?.snippet?.publishedAt}
+                0 views - {videoInfo?.snippet?.publishedAt?.substring(0, 10)}
               </Text>
               <Flex gap={4}>
                 {buttons.map((x) => {
@@ -143,7 +160,7 @@ const ViewVideo: NextPage = () => {
           </Flex>
           <Flex paddingBlock={4} gap={4}>
             <Box w="44px"></Box>
-            <Text color="secondaryColor">
+            <Text color="secondaryColor" whiteSpace="pre-wrap">
               {videoInfo?.snippet?.description}
             </Text>
           </Flex>
@@ -160,7 +177,7 @@ const ViewVideo: NextPage = () => {
               Related videos
             </Text>
           </Box>
-          <Flex direction="column" gap={4}>
+          <Flex direction="column" gap={8}>
             {(relatedVideos || [])?.map((item: any) => {
               return <Video item={item} key={item.id?.videoId} horizontal />;
             })}
